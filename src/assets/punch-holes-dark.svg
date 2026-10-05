@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="36" viewBox="0 0 48 36">
+  <defs>
+    <radialGradient id="holeDepthDark" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#00060e"/>
+      <stop offset="65%" stop-color="#000e1c"/>
+      <stop offset="90%" stop-color="#00162a"/>
+      <stop offset="100%" stop-color="#002244"/>
+    </radialGradient>
+    <linearGradient id="holeHighlightDark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(0,0,0,0.7)"/>
+      <stop offset="100%" stop-color="rgba(0,180,216,0.6)"/>
+    </linearGradient>
+  </defs>
+  <!-- Emboss / Blueprint thickness rim -->
+  <circle cx="20" cy="18" r="6.5" fill="none" stroke="url(#holeHighlightDark)" stroke-width="1"/>
+  <!-- Cutout hole -->
+  <circle cx="20" cy="18" r="6" fill="url(#holeDepthDark)"/>
+</svg>

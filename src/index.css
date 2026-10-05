@@ -1,0 +1,514 @@
+/* === M&S VIBES — CONTEMPORARY STREETWEAR DESIGN SYSTEM ===
+   Palette: Midnight Navy (#001428) + Electric Cyan (#00B4D8) + Calm Sky (#90E0EF) + Warm Gold (#FFD166) + Violet (#7D3CFF)
+   Style:   Modern Glassmorphism, Ambient Mesh Glows, Sleek Micro-interactions, Crisp Typography
+*/
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Exact Colors from User Image */
+  --bg-deep:      #001428;
+  --bg-surface:   #001c38;
+  --bg-surface-2: #002447;
+  --border-color: #003366;
+
+  /* Sky Blues & Cyans */
+  --sky-light:    #90E0EF;
+  --sky-cyan:     #00B4D8;
+  --sky-ocean:    #0077B6;
+  --navy-deep:    #003366;
+
+  /* Creams & Golds */
+  --cream-light:  #FFF7E6;
+  --gold-warm:    #FFD166;
+  --sand-beige:   #F4D6A6;
+  --camel-tan:    #C5A888;
+
+  /* Greens */
+  --green-sage:   #A5D6A7;
+  --green-leaf:   #8BC34A;
+  --green-forest: #2E7D32;
+  --green-pine:   #1B4332;
+
+  /* Pinks & Purples */
+  --pink-soft:    #FFB0BA;
+  --pink-pop:     #FF4D9D;
+  --purple-neon:  #7D3CFF;
+  --purple-deep:  #4B00B2;
+}
+
+html.light {
+  --bg-deep:      #F8FAFC;
+  --bg-surface:   #FFFFFF;
+  --bg-surface-2: #F0F9FF;
+  --border-color: #E2E8F0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  direction: rtl;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #001428;
+  background-image: 
+    linear-gradient(to right, rgba(0, 180, 216, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 180, 216, 0.08) 1px, transparent 1px),
+    linear-gradient(to right, rgba(0, 180, 216, 0.22) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, rgba(0, 180, 216, 0.22) 1.5px, transparent 1.5px);
+  background-size: 20px 20px, 20px 20px, 100px 100px, 100px 100px;
+  background-position: 0 0, 0 0, 0 0, 0 0;
+  color: #FFF7E6;
+}
+
+html.light body {
+  background-color: #F2E7CB;
+  background-image: 
+    linear-gradient(to right, rgba(185, 175, 150, 0.6) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(185, 175, 150, 0.6) 1px, transparent 1px);
+  background-size: 27px 27px;
+  background-position: 0 0, 0 0;
+  color: #001428;
+}
+
+/* === FULL-PAGE CRUMPLE & NOTEBOOK PUNCH HOLES (GPU OPTIMIZED) === */
+.crumpled-page-texture {
+  position: absolute;
+  inset: 0;
+  background-image: url('./assets/crumpled-paper.jpg');
+  background-repeat: repeat;
+  background-size: 700px 700px;
+  background-position: top center;
+  opacity: 0.13;
+  pointer-events: none;
+  z-index: 1;
+}
+
+html.dark .crumpled-page-texture {
+  background-image: url('./assets/crumpled-paper-dark.jpg');
+  opacity: 0.16;
+}
+
+.notebook-spine-holes {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  background-repeat: repeat-y;
+  background-position: 0 0;
+  background-size: 48px 36px;
+  pointer-events: none;
+  z-index: 45;
+  border-right: 1px solid rgba(220, 160, 150, 0.4);
+}
+
+html.light .notebook-spine-holes {
+  background-image: url('./assets/punch-holes-light.svg');
+}
+
+html.dark .notebook-spine-holes {
+  background-image: url('./assets/punch-holes-dark.svg');
+  border-right-color: rgba(0, 180, 216, 0.25);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.font-english {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* === GEN Z SCRAPBOOK & ZINE CRUMPLED PAPER CARD SYSTEM === */
+.crumpled-card-container {
+  position: relative;
+  contain: layout style;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.crumpled-card-container:nth-child(odd) {
+  transform: rotate(-0.6deg);
+}
+
+.crumpled-card-container:nth-child(even) {
+  transform: rotate(0.6deg);
+}
+
+.crumpled-card-container:hover {
+  transform: translateY(-6px) scale(1.015) rotate(0deg);
+  z-index: 20;
+}
+
+/* Light Mode Crumpled Paper Card — Crisp Neo-Brutalist Zine Border & Offset Shadow */
+.paper-card-light {
+  background-color: #FFFBF2;
+  background-image: url('./assets/crumpled-paper.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #001428;
+  box-shadow: 5px 5px 0px #001428;
+}
+
+.paper-card-light:hover {
+  box-shadow: 8px 8px 0px #0077B6;
+}
+
+/* Dark Mode Crumpled Paper Card — Streetwear Cyber Zine Border & Offset Shadow */
+.paper-card-dark {
+  background-color: #001C38;
+  background-image: url('./assets/crumpled-paper-dark.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #00B4D8;
+  box-shadow: 5px 5px 0px rgba(0, 180, 216, 0.45);
+}
+
+.paper-card-dark:hover {
+  border-color: #FFD166;
+  box-shadow: 7px 7px 0px #00B4D8;
+}
+
+/* Gen Z Sticker Badge */
+.genz-sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border: 2px solid #001428;
+  box-shadow: 3px 3px 0px #001428;
+  transform: rotate(-1.5deg);
+  font-weight: 900;
+}
+
+html.dark .genz-sticker {
+  border-color: #001428;
+  box-shadow: 3px 3px 0px rgba(0, 180, 216, 0.6);
+}
+
+/* Gen Z Button Hard Shadow */
+.genz-btn {
+  border: 2px solid #001428;
+  box-shadow: 4px 4px 0px #001428;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.genz-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #001428;
+}
+
+.genz-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #001428;
+}
+
+html.dark .genz-btn {
+  border-color: #90E0EF;
+  box-shadow: 4px 4px 0px #00B4D8;
+}
+
+html.dark .genz-btn:hover {
+  box-shadow: 6px 6px 0px #FFD166;
+}
+
+/* === CRUMPLED PAPER BUTTON & CRUMPLE-UNFOLD ANIMATION === */
+.crumpled-paper-btn {
+  position: relative;
+  overflow: hidden;
+  background-color: #FFF7E0;
+  background-image:
+    linear-gradient(135deg, rgba(255, 209, 102, 0.42) 0%, rgba(144, 224, 239, 0.38) 50%, rgba(255, 247, 230, 0.65) 100%),
+    url('./assets/crumpled-paper.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #001428;
+  border: 2.5px solid #001428;
+  border-radius: 14px 18px 15px 19px;
+  box-shadow:
+    4px 4px 0px #001428,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+  transform-origin: center center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.crumpled-paper-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(128deg, transparent 36%, rgba(0, 20, 40, 0.11) 38%, rgba(255, 255, 255, 0.65) 40%, transparent 43%),
+    linear-gradient(52deg, transparent 60%, rgba(0, 20, 40, 0.09) 62%, rgba(255, 255, 255, 0.55) 64%, transparent 67%),
+    linear-gradient(165deg, transparent 72%, rgba(0, 20, 40, 0.08) 74%, transparent 76%);
+  z-index: 1;
+}
+
+/* Faceted fold creases — like a paper ball's shaded facets */
+.crumpled-paper-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(118deg, transparent 18%, rgba(0,20,40,0.30) 19%, rgba(255,255,255,0.55) 21%, transparent 24%),
+    linear-gradient(62deg, transparent 34%, rgba(255,255,255,0.6) 35%, rgba(0,20,40,0.28) 37%, transparent 40%),
+    linear-gradient(152deg, transparent 52%, rgba(0,20,40,0.26) 53%, rgba(255,255,255,0.5) 55%, transparent 58%),
+    linear-gradient(28deg, transparent 63%, rgba(255,255,255,0.55) 64%, rgba(0,20,40,0.3) 66%, transparent 69%),
+    linear-gradient(98deg, transparent 76%, rgba(0,20,40,0.24) 77%, rgba(255,255,255,0.45) 79%, transparent 82%),
+    linear-gradient(200deg, rgba(0,20,40,0.18) 0%, transparent 35%, rgba(255,255,255,0.25) 60%, rgba(0,20,40,0.2) 100%);
+  z-index: 2;
+  transition: opacity 0.6s ease;
+}
+
+/* After unfolding, the paper keeps faint wrinkles (like real crumpled paper) */
+.crumpled-paper-btn.is-added::after {
+  opacity: 0.4;
+}
+
+.crumpled-paper-btn:hover {
+  transform: translate(-2px, -2px) rotate(-0.8deg);
+  box-shadow: 6px 6px 0px #001428;
+}
+
+html.dark .crumpled-paper-btn {
+  background-color: #FFF4D2;
+  background-image:
+    linear-gradient(135deg, rgba(144, 224, 239, 0.55) 0%, rgba(255, 209, 102, 0.52) 100%),
+    url('./assets/crumpled-paper.jpg');
+  color: #001428;
+  border-color: #FFF7E6;
+  box-shadow: 4px 4px 0px #00B4D8;
+}
+
+html.dark .crumpled-paper-btn:hover {
+  box-shadow: 6px 6px 0px #FFD166;
+}
+
+.crumpled-paper-btn.is-added {
+  background-image:
+    linear-gradient(135deg, rgba(165, 214, 167, 0.78) 0%, rgba(255, 209, 102, 0.55) 100%),
+    url('./assets/crumpled-paper.jpg');
+}
+
+/* === Realistic paper crumple → ball → unfold ===
+   - clip-path (same 12-point polygon in every frame) gives a jagged, torn-paper silhouette
+   - transform squeezes the wide button into a small ball, then springs it back open
+   - label hides while crumpled, faceted creases flash in, faint wrinkles remain after unfolding */
+@keyframes paperCrumpleUnfold {
+  0% {
+    transform: none;
+    clip-path: polygon(0% 0%, 25% 0%, 50% 0%, 75% 0%, calc(100% + 8px) 0%, calc(100% + 8px) 50%, calc(100% + 8px) calc(100% + 8px), 75% calc(100% + 8px), 50% calc(100% + 8px), 25% calc(100% + 8px), 0% calc(100% + 8px), 0% 50%);
+  }
+  14% {
+    transform: scale(0.94, 0.88) rotate(-2deg);
+    clip-path: polygon(2% 10%, 24% 3%, 49% 12%, 76% 2%, 98% 9%, 94% 50%, 99% 90%, 74% 97%, 51% 86%, 23% 98%, 1% 90%, 6% 48%);
+  }
+  32% {
+    transform: scale(0.42, 1) rotate(9deg);
+    clip-path: polygon(14% 18%, 33% 4%, 52% 16%, 70% 0%, 90% 20%, 82% 48%, 95% 80%, 68% 94%, 50% 100%, 30% 86%, 4% 82%, 16% 50%);
+  }
+  46% {
+    transform: scale(0.24, 1.06) rotate(-8deg);
+    clip-path: polygon(22% 12%, 42% 0%, 60% 16%, 82% 4%, 94% 34%, 84% 56%, 92% 86%, 64% 96%, 44% 86%, 20% 100%, 6% 70%, 14% 40%);
+  }
+  56% {
+    transform: scale(0.27, 0.98) rotate(-15deg);
+    clip-path: polygon(18% 16%, 40% 4%, 62% 10%, 80% 0%, 96% 30%, 88% 58%, 94% 84%, 70% 100%, 46% 90%, 24% 96%, 4% 74%, 12% 44%);
+  }
+  74% {
+    transform: scale(1.05, 0.95) rotate(1.5deg);
+    clip-path: polygon(1% 6%, 26% 0%, 50% 8%, 74% 0%, 99% 5%, 97% 50%, 100% 95%, 76% 100%, 50% 92%, 24% 100%, 0% 96%, 3% 52%);
+  }
+  88% {
+    transform: scale(0.985, 1.02) rotate(-0.5deg);
+    clip-path: polygon(0% 0%, 25% 0%, 50% 0%, 75% 0%, calc(100% + 4px) 0%, calc(100% + 4px) 50%, calc(100% + 4px) calc(100% + 4px), 75% calc(100% + 4px), 50% calc(100% + 4px), 25% calc(100% + 4px), 0% calc(100% + 4px), 0% 50%);
+  }
+  100% {
+    transform: none;
+    clip-path: polygon(0% 0%, 25% 0%, 50% 0%, 75% 0%, calc(100% + 8px) 0%, calc(100% + 8px) 50%, calc(100% + 8px) calc(100% + 8px), 75% calc(100% + 8px), 50% calc(100% + 8px), 25% calc(100% + 8px), 0% calc(100% + 8px), 0% 50%);
+  }
+}
+
+@keyframes paperCreaseFlash {
+  0%   { opacity: 0; }
+  24%  { opacity: 0.9; }
+  60%  { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+@keyframes paperLabelHide {
+  0%   { opacity: 1; transform: none; }
+  16%  { opacity: 0; transform: scale(0.75) rotate(-6deg); }
+  64%  { opacity: 0; transform: scale(0.75) rotate(4deg); }
+  82%  { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: none; }
+}
+
+.crumpled-paper-btn.is-crumpling {
+  animation: paperCrumpleUnfold 0.9s cubic-bezier(0.45, 0, 0.25, 1) both;
+  pointer-events: none;
+}
+
+.crumpled-paper-btn.is-crumpling::after {
+  animation: paperCreaseFlash 0.9s ease-in-out both;
+}
+
+.crumpled-paper-btn.is-crumpling .crumple-label {
+  animation: paperLabelHide 0.9s ease-in-out both;
+}
+
+/* Semi-transparent Masking / Scotch Tape Sticker (No heavy backdrop-filter) */
+.paper-tape {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 96px;
+  height: 24px;
+  background: linear-gradient(90deg, rgba(255, 248, 220, 0.82), rgba(245, 235, 200, 0.92), rgba(255, 248, 220, 0.82));
+  border-top: 1px solid rgba(0, 20, 40, 0.15);
+  border-bottom: 1px solid rgba(0, 20, 40, 0.15);
+  border-left: 2px dashed rgba(0, 20, 40, 0.3);
+  border-right: 2px dashed rgba(0, 20, 40, 0.3);
+  box-shadow: 2px 2px 0px rgba(0, 20, 40, 0.12);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.crumpled-card-container:nth-child(even) .paper-tape {
+  transform: translateX(-50%) rotate(2deg);
+}
+
+html.dark .paper-tape {
+  background: linear-gradient(90deg, rgba(0, 180, 216, 0.32), rgba(144, 224, 239, 0.45), rgba(0, 180, 216, 0.32));
+  border-top: 1px solid rgba(144, 224, 239, 0.3);
+  border-bottom: 1px solid rgba(144, 224, 239, 0.3);
+  border-left: 2px dashed rgba(255, 255, 255, 0.35);
+  border-right: 2px dashed rgba(255, 255, 255, 0.35);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.35);
+}
+
+/* Realistic diagonal crease lines (No mix-blend-mode GPU overhead) */
+.paper-crease-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    linear-gradient(135deg, transparent 48%, rgba(255, 255, 255, 0.1) 49%, rgba(0, 0, 0, 0.07) 51%, transparent 52%),
+    linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.07) 41%, rgba(0, 0, 0, 0.06) 42%, transparent 43%);
+  z-index: 10;
+}
+
+/* Blueprint / Graph Paper Corner Ticks */
+.graph-corner-tick {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(0, 180, 216, 0.4);
+}
+
+/* Glassmorphism utility (Lightweight fallback) */
+.glass-panel-dark {
+  background: rgba(0, 28, 56, 0.92);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.glass-panel-dark:hover {
+  border-color: rgba(0, 180, 216, 0.5);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.glass-panel-light:hover {
+  border-color: rgba(14, 165, 233, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #001428;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #0077B6;
+  border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #00B4D8;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #BAE6FD;
+  border-radius: 9999px;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #0284C7;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid #00B4D8;
+  outline-offset: 2px;
+}
+
+/* Ticker marquee (GPU-cached layer) */
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  backface-visibility: hidden;
+  animation: ticker 32s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Ambient glow animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.08); }
+}
+
+.pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
