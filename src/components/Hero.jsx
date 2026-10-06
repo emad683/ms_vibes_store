@@ -31,7 +31,7 @@ export default function Hero() {
     return () => clearInterval(id);
   }, []);
 
-  const pct = Math.round((SOLD / TOTAL) * 100);
+  const pct = Math.round(((TOTAL - SOLD) / TOTAL) * 100);
 
   return (
     <section
